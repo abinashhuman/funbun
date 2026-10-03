@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Invitation · ANAYRA'S Fun Zone</title>
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/play.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../" class="logo"><span class="logo-dot"></span> ANAYRA<span class="logo-fun">Fun Zone</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../painting/">Painting</a>
+      <a href="../birthday-invitation/">Birthday card</a>
+      <a href="../../">← Home</a>
+    </nav>
+  </header>
+  <main class="play-page" data-studio="invitation">
+    <div class="play-heading">
+      <p class="play-kicker">You are invited</p>
+      <h1>Birthday Invitation</h1>
+      <p>Your card, your way! JJ and Mikey wait beside it until you choose where they go.</p>
+    </div>
+    <div class="studio-layout">
+      <aside class="play-panel studio-tools" aria-label="Drawing supplies">
+        <div>
+          <h2>Pick a color</h2>
+          <div class="color-grid" role="group" aria-label="Paint colors"><button type="button" class="color-swatch" data-color="#c89727" style="--swatch: #c89727" aria-label="Gold" aria-pressed="false"></button><button type="button" class="color-swatch" data-color="#7c5cff" style="--swatch: #7c5cff" aria-label="Purple" aria-pressed="true"></button>
+<button type="button" class="color-swatch" data-color="#ff7eb6" style="--swatch: #ff7eb6" aria-label="Pink" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#ef4261" style="--swatch: #ef4261" aria-label="Red" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#ff973c" style="--swatch: #ff973c" aria-label="Orange" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#ffd166" style="--swatch: #ffd166" aria-label="Yellow" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#42bf85" style="--swatch: #42bf85" aria-label="Green" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#4cbcf3" style="--swatch: #4cbcf3" aria-label="Blue" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#2b2140" style="--swatch: #2b2140" aria-label="Black" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#9b6644" style="--swatch: #9b6644" aria-label="Brown" aria-pressed="false"></button>
+<button type="button" class="color-swatch" data-color="#ffffff" style="--swatch: #ffffff" aria-label="White" aria-pressed="false"></button></div>
+        </div>
+        <details class="tool-section">
+          <summary>🖌️ Paint & shapes</summary>
+          <div class="tool-grid" role="group" aria-label="Drawing tools"><button type="button" class="tool-button" data-tool="brush" aria-pressed="true">🖌️ Brush</button>
+<button type="button" class="tool-button" data-tool="rainbow-brush" aria-pressed="false">🌈 Rainbow brush</button>
+<button type="button" class="tool-button" data-tool="glitter" aria-pressed="false">✨ Glitter</button>
+<button type="button" class="tool-button" data-tool="eraser" aria-pressed="false">🧽 Eraser</button>
+<button type="button" class="tool-button" data-tool="rainbow" aria-pressed="false">🌈 Rainbow</button>
+<button type="button" class="tool-button" data-tool="spiral" aria-pressed="false">🌀 Spiral</button>
+<button type="button" class="tool-button" data-tool="circle" aria-pressed="false">● Circle</button>
+<button type="button" class="tool-button" data-tool="square" aria-pressed="false">■ Square</button>
+<button type="button" class="tool-button" data-tool="triangle" aria-pressed="false">▲ Triangle</button>
+<button type="button" class="tool-button" data-tool="star" aria-pressed="false">★ Star</button>
+<button type="button" class="tool-button" data-tool="heart" aria-pressed="false">♥ Heart</button></div>
+        </details>
+        <div>
+          <label class="size-label" for="brush-size">Size <output data-size-value for="brush-size">14</output></label>
+          <input id="brush-size" type="range" min="4" max="48" value="14" data-size>
+        </div>
+        <div class="sticker-supplies">
+          <h2>JJ & Mikey stickers</h2>
+          <p class="supply-note">Choose one, then tap the card. Each sticker goes on separately!</p>
+          <div class="tool-grid sticker-grid" role="group" aria-label="Character stickers">
+            <button type="button" class="tool-button" data-tool="jj" aria-pressed="false" draggable="true" disabled><span class="sticker-thumb" aria-hidden="true"></span>JJ</button>
+            <button type="button" class="tool-button" data-tool="mikey" aria-pressed="false" draggable="true" disabled><span class="sticker-thumb mikey" aria-hidden="true"></span>Mikey</button>
+            <button type="button" class="tool-button amazing-sticker" data-tool="amazing" aria-pressed="false" draggable="true">✨ AMAZING!</button>
+          </div>
+        </div>
+        <div class="instruction-sign">
+          <h2>🪧 Decorating instructions</h2>
+          <p>Pick a color. Choose JJ, Mikey, or Amazing. Tap where you want the sticker, or drag it onto your card. Open Paint & shapes to draw. Undo lets you try again!</p>
+        </div>
+      </aside>
+      <div class="studio-surface">
+        <div class="canvas-frame">
+          <canvas class="drawing-canvas" width="700" height="900" tabindex="0" aria-label="ANAYRA birthday invitation. Add separate JJ, Mikey, and Amazing stickers from the supplies beside the card.">Your browser needs canvas support to use the drawing tools.</canvas>
+        </div>
+        <div class="studio-actions">
+          <button type="button" class="play-button" data-undo disabled>↶ Undo</button>
+          <button type="button" class="play-button" data-redo disabled>↷ Redo</button>
+          <button type="button" class="play-button" data-reset>Start over</button>
+          <button type="button" class="play-button primary" data-save>Save picture ↓</button>
+          <button type="button" class="play-button primary" id="share-invitation">Send to friends 💌</button>
+          <button type="button" class="play-button" id="download-invitation">Download invitation ↓</button>
+          <button type="button" class="play-button" id="previous-card" hidden>Save previous card</button>
+        </div>
+        <p class="studio-note">Drag to paint. Tap to place a shape or sticker. Your picture stays on this device.</p>
+        <p class="live-message studio-message" data-message role="status">Pick a tool and let your imagination fly!</p>
+        <p class="live-message studio-message" id="share-message" role="status"></p>
+        <section class="play-panel coming-panel" aria-labelledby="coming-heading">
+          <h2 id="coming-heading">Coming to the party?</h2>
+          <div class="coming-choices" role="group" aria-label="Coming to the party">
+            <button type="button" class="choice-button" data-coming="yes" aria-pressed="false">Yes! 🎉</button>
+            <button type="button" class="choice-button" data-coming="no" aria-pressed="false">No 💜</button>
+          </div>
+          <p class="live-message" id="coming-message" role="status">Choose Yes or No.</p>
+          <div class="instruction-sign" id="party-instructions" hidden>
+            <h3>🪧 Party instructions</h3>
+            <p id="guest-instructions"></p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <section class="play-panel invitation-settings" aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">🪧 Instructions for your friends</h2>
+      <label class="field-label" for="instruction-text">What should they do when they choose Yes?</label>
+      <textarea id="instruction-text" rows="3" maxlength="600">Bring your big smile! Get ready to paint, play games, and have fun. Tell ANAYRA you're coming by replying to the invitation message.</textarea>
+      <p class="studio-note">Send to friends shares an invitation file with your decorated card, Yes and No buttons, and these instructions. If sharing isn't available, it downloads the file for you to send.</p>
+    </section>
+  </main>
+  <script src="../../js/drawing.js"></script>
+  <script src="invitation.js"></script>
+</body>
+</html>

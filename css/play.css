@@ -1,0 +1,104 @@
+/* Shared styles for Anayra's games and drawing tools. */
+[hidden] { display: none !important; }
+
+.play-page { max-width: 1200px; margin: 0 auto; padding: 24px 24px 64px; }
+.play-heading { text-align: center; margin-bottom: 28px; }
+.play-heading h1 { margin: 0; font: 800 clamp(2rem, 6vw, 3.4rem)/1.1 var(--font-display); }
+.play-heading p { margin: 12px 0 0; line-height: 1.6; }
+.play-kicker { color: var(--purple); font-weight: 800; letter-spacing: .12em; font-size: .8rem; text-transform: uppercase; }
+.play-panel { background: #fff; border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.play-panel h2 { margin: 0 0 12px; font: 700 1.3rem var(--font-display); }
+.play-button, .tool-button, .puzzle-tab, .choice-button {
+  font: 700 1rem var(--font-body); color: var(--ink); background: #fff;
+  border: 2px solid #e9e2f2; border-radius: 14px; padding: 11px 14px; cursor: pointer;
+  min-height: 46px; transition: background .15s, border-color .15s, transform .15s;
+}
+.play-button:hover, .tool-button:hover, .choice-button:hover { border-color: var(--purple); background: #f7f3ff; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-visible {
+  outline: 3px solid var(--purple); outline-offset: 4px;
+}
+button:disabled { opacity: .45; cursor: default; }
+.play-button.primary { background: var(--purple); border-color: var(--purple); color: white; }
+.play-button.secondary { color: var(--purple); background: #f5efff; }
+.tool-button[aria-pressed="true"], .choice-button[aria-pressed="true"], .puzzle-tab[aria-pressed="true"] {
+  border-color: var(--purple); background: #f0eaff; box-shadow: 0 0 0 1px var(--purple);
+}
+.studio-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: start; }
+.studio-tools { display: grid; gap: 22px; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tool-button { padding: 9px 7px; font-size: .9rem; }
+.color-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.color-swatch { width: 36px; height: 36px; border: 3px solid white; border-radius: 50%; background: var(--swatch); cursor: pointer; box-shadow: 0 0 0 1px #d9d2e3; }
+.color-swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--ink); }
+.size-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 700; }
+input[type="range"] { width: 100%; accent-color: var(--purple); margin-top: 14px; }
+.sticker-thumb { display: block; width: 42px; height: 66px; margin: 0 auto 5px; background: url('../assets/images/jj-mikey-stickers.png') left center / 200% 100% no-repeat; }
+.sticker-thumb.mikey { background-position: right center; }
+.studio-surface { min-width: 0; }
+.canvas-frame { border: 2px solid #e9e2f2; border-radius: 20px; overflow: hidden; background: white; box-shadow: var(--shadow); }
+.drawing-canvas { display: block; width: 100%; height: auto; touch-action: none; cursor: crosshair; }
+.studio-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+.studio-note { text-align: center; font-size: .9rem; line-height: 1.6; color: #5b4a71; margin: 14px 0; }
+.live-message { min-height: 1.5em; line-height: 1.5; font-weight: 700; }
+.studio-message { text-align: center; color: var(--purple); }
+
+/* Space flight has real buttons as well as keyboard and touch controls. */
+.rocket-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; }
+.rocket-layout.is-playing { grid-template-columns: 1fr; max-width: 1000px; margin: 0 auto; }
+.rocket-setup { display: grid; gap: 16px; }
+.ride-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ride-icon { display: block; font-size: 2rem; margin-bottom: 4px; }
+.field-label { display: grid; gap: 7px; font-weight: 700; }
+.field-label input, .field-label select, .answer-input {
+  width: 100%; border: 2px solid #dfd6ed; border-radius: 12px; padding: 12px;
+  font: 600 1rem var(--font-body); background: white; color: var(--ink);
+}
+.flight-box { position: relative; overflow: hidden; border-radius: 22px; background: #12132d; }
+.flight-canvas { display: block; width: 100%; height: auto; touch-action: none; }
+.flight-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: #10102bba; padding: 16px; }
+.flight-overlay .play-panel { width: min(100%, 380px); text-align: center; padding: 24px; max-height: 100%; overflow: auto; }
+.math-question { font: 800 clamp(1.9rem, 7vw, 2.8rem) var(--font-display); margin: 10px 0; }
+.math-answer-row { display: flex; gap: 8px; }
+.math-answer-row input { min-width: 0; }
+.flight-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.flight-score { font-weight: 800; color: var(--purple); }
+.flight-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.flight-controls button { font-size: 1.4rem; min-width: 56px; touch-action: none; user-select: none; }
+.mission-name { overflow-wrap: anywhere; }
+
+/* Three kinds of puzzles, with no timers or pressure. */
+.puzzle-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 24px; }
+.puzzle-panel { max-width: 760px; margin: 0 auto; text-align: center; }
+.memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0; }
+.memory-card { aspect-ratio: 1; min-height: 64px; border: 2px solid #e2d8fa; border-radius: 16px; background: linear-gradient(145deg, #7c5cff, #aa7cff); color: white; font: 800 clamp(1.5rem, 7vw, 2.5rem) var(--font-display); cursor: pointer; }
+.memory-card.revealed { background: #fff5db; color: var(--ink); }
+.memory-card.matched { background: #e5fff1; border-color: #6bc99c; color: var(--ink); opacity: 1; }
+.puzzle-display { background: #f7f3ff; border-radius: 18px; padding: 28px 12px; margin: 22px 0; font: 800 clamp(1.7rem, 6vw, 3rem) var(--font-display); letter-spacing: .08em; overflow-wrap: anywhere; }
+.puzzle-choices { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.puzzle-choices button { font-size: 1.5rem; min-width: 80px; }
+.puzzle-answer-form { max-width: 370px; margin: 0 auto; }
+.puzzle-progress { color: var(--purple); font-weight: 800; }
+.puzzle-message { margin: 20px 0 12px; }
+
+@media (max-width: 850px) {
+  .studio-layout, .rocket-layout { grid-template-columns: 1fr; }
+  .studio-tools { grid-template-columns: 1fr 1fr; padding: 18px; gap: 18px; }
+  .studio-tools .tool-section { grid-row: span 2; }
+  .tool-grid { grid-template-columns: repeat(3, 1fr); }
+  .rocket-setup { grid-template-columns: 1fr 1fr; }
+  .rocket-setup h2, .rocket-setup .ride-section { grid-column: 1 / -1; }
+  .ride-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 520px) {
+  .play-page { padding: 18px 14px 40px; }
+  .studio-tools { grid-template-columns: 1fr; }
+  .studio-tools .tool-section { grid-row: auto; }
+  .sticker-grid { grid-template-columns: 1fr 1fr; }
+  .sticker-grid .tool-button { display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .sticker-thumb { width: 30px; height: 46px; margin: 0; }
+  .play-panel { padding: 18px; }
+  .rocket-setup { grid-template-columns: 1fr; }
+  .ride-grid { grid-template-columns: 1fr 1fr; }
+  .flight-canvas { aspect-ratio: 1 / 1.1; object-fit: fill; }
+  .memory-grid { gap: 8px; }
+}
