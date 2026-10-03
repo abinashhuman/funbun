@@ -1,0 +1,38 @@
+/* Keep the separate stickers BESIDE the invitation, including on a phone. */
+.studio-layout { grid-template-columns: minmax(0, 1fr) 260px; }
+.studio-tools { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 20px; }
+.studio-surface { width: 100%; max-width: 650px; margin: 0 auto; }
+.studio-surface { grid-column: 1; grid-row: 1; }
+.sticker-supplies { order: -1; }
+.sticker-grid { grid-template-columns: 1fr 1fr; }
+.sticker-grid .tool-button { display: block; }
+.sticker-thumb { width: 68px; height: 92px; margin: 0 auto 6px; }
+.supply-note { margin: 0 0 12px; font-size: .9rem; line-height: 1.5; }
+.amazing-sticker { grid-column: 1 / -1; background: #fff4c9; color: var(--purple); font-weight: 800; }
+.tool-section summary { font-weight: 800; cursor: pointer; padding: 8px 0; }
+.tool-section .tool-grid { margin-top: 10px; }
+.instruction-sign { border: 2px dashed #d0c0ed; background: #faf6ff; padding: 14px; border-radius: 16px; }
+.instruction-sign h2, .instruction-sign h3 { margin: 0 0 8px; font: 700 1.1rem var(--font-display); }
+.instruction-sign p { margin: 0; font-size: .9rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.coming-panel { margin-top: 20px; text-align: center; }
+.coming-choices { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.invitation-settings { max-width: 950px; margin: 28px auto 0; }
+.invitation-settings textarea { width: 100%; margin-top: 12px; border: 2px solid #dfd6ed; border-radius: 12px; padding: 12px; font: 600 1rem/1.6 var(--font-body); resize: vertical; }
+@media (max-width: 650px) {
+  .studio-layout { grid-template-columns: minmax(0, 1fr) 112px; gap: 12px; }
+  .studio-tools { padding: 10px; gap: 14px; }
+  .studio-tools h2 { font-size: .95rem; }
+  .sticker-grid, .tool-grid { grid-template-columns: 1fr; }
+  .amazing-sticker { grid-column: 1; font-size: .75rem; }
+  .sticker-thumb { width: 54px; height: 72px; }
+  .color-grid { gap: 7px; }
+  .color-swatch { width: 26px; height: 26px; }
+  .supply-note, .instruction-sign p { font-size: .75rem; }
+  .studio-tools .instruction-sign { padding: 8px; }
+  .studio-tools .instruction-sign h2 { font-size: .8rem; }
+  .studio-tools .size-label { font-size: .8rem; }
+  .tool-section summary { font-size: .8rem; }
+  .studio-actions { gap: 6px; }
+  .studio-actions .play-button { font-size: .8rem; padding: 9px; }
+  .coming-panel { padding: 12px; }
+}

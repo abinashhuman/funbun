@@ -5,18 +5,34 @@
 // ==========================================================
 
 // ---------- 1. Make each letter of the name bounce ----------
-// We split "Anaira's" into separate <span> letters so CSS can
-// animate each one with a tiny delay. That creates the wave!
+// Each letter is a button. Tap once to grow it; tap again to shrink it.
 const wiggle = document.querySelector(".wiggle");
 if (wiggle) {
   const text = wiggle.textContent;
   wiggle.textContent = "";
   [...text].forEach((char, i) => {
-    const span = document.createElement("span");
-    span.className = "letter";
-    span.textContent = char;
-    span.style.animationDelay = `${i * 0.08}s`;
-    wiggle.appendChild(span);
+    if (!/[A-Z]/i.test(char)) {
+      const punctuation = document.createElement('span');
+      punctuation.textContent = char;
+      wiggle.appendChild(punctuation);
+      return;
+    }
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'letter';
+    button.setAttribute('aria-label', `Make ${char} bigger`);
+    button.setAttribute('aria-pressed', 'false');
+    const glyph = document.createElement('span');
+    glyph.className = 'letter-glyph';
+    glyph.textContent = char;
+    glyph.style.animationDelay = `${i * 0.08}s`;
+    button.appendChild(glyph);
+    button.addEventListener('click', () => {
+      const big = button.classList.toggle('is-big');
+      button.setAttribute('aria-pressed', String(big));
+      button.setAttribute('aria-label', `Make ${char} ${big ? 'smaller' : 'bigger'}`);
+    });
+    wiggle.appendChild(button);
   });
 }
 

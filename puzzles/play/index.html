@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle Playground · ANAYRA'S Fun Zone</title>
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/play.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../" class="logo"><span class="logo-dot"></span> ANAYRA<span class="logo-fun">Fun Zone</span></a>
+    <nav class="nav" aria-label="Main navigation"><a href="../../projects/painting/">Painting</a><a href="../../projects/rocket/">Rockets</a><a href="../../">← Home</a></nav>
+  </header>
+  <main class="play-page">
+    <div class="play-heading"><p class="play-kicker">Little mysteries, big smiles</p><h1>Puzzle Playground</h1><p>Match pictures, spot patterns, and solve number puzzles. Take your time!</p></div>
+    <div class="puzzle-tabs" role="group" aria-label="Choose a puzzle">
+      <button type="button" class="puzzle-tab" data-game="memory" aria-pressed="true">🧩 Memory Match</button>
+      <button type="button" class="puzzle-tab" data-game="patterns" aria-pressed="false">🌈 Patterns</button>
+      <button type="button" class="puzzle-tab" data-game="numbers" aria-pressed="false">🔢 Number Puzzles</button>
+    </div>
+    <section class="play-panel puzzle-panel" id="memory-panel" aria-labelledby="memory-heading">
+      <h2 id="memory-heading">Find the matching pairs</h2><p>Flip two cards. Can you find all six pairs?</p>
+      <p class="puzzle-progress" id="memory-progress">Pairs: 0 / 6 · Turns: 0</p>
+      <div class="memory-grid" id="memory-grid" role="group" aria-label="Memory cards"></div>
+      <p class="live-message puzzle-message" id="memory-message" role="status">Choose your first card!</p>
+      <button type="button" class="play-button secondary" id="memory-reset">Shuffle & play again</button>
+    </section>
+    <section class="play-panel puzzle-panel" id="patterns-panel" aria-labelledby="patterns-heading" hidden>
+      <h2 id="patterns-heading">What comes next?</h2><p>Look at the pattern and pick its next piece.</p>
+      <p class="puzzle-progress" id="patterns-progress"></p>
+      <div class="puzzle-display" id="pattern-display" role="img"></div>
+      <div class="puzzle-choices" id="pattern-choices" role="group" aria-label="Choose the next piece"></div>
+      <p class="live-message puzzle-message" id="patterns-message" role="status"></p>
+      <div class="studio-actions"><button type="button" class="play-button primary" id="pattern-next" hidden>Next pattern →</button><button type="button" class="play-button secondary" id="patterns-reset">Start over</button></div>
+    </section>
+    <section class="play-panel puzzle-panel" id="numbers-panel" aria-labelledby="numbers-heading" hidden>
+      <h2 id="numbers-heading">Number detective</h2><p>Six little number puzzles to solve.</p>
+      <p class="puzzle-progress" id="numbers-progress"></p>
+      <div class="puzzle-display" id="number-display"></div>
+      <form class="puzzle-answer-form" id="number-form">
+        <label class="field-label" for="number-answer">Your answer</label>
+        <div class="math-answer-row"><input class="answer-input" id="number-answer" type="number" min="0" step="1" inputmode="numeric" required><button type="submit" class="play-button primary" id="number-check">Check</button></div>
+      </form>
+      <p class="live-message puzzle-message" id="numbers-message" role="status"></p>
+      <div class="studio-actions"><button type="button" class="play-button primary" id="number-next" hidden>Next puzzle →</button><button type="button" class="play-button secondary" id="numbers-reset">Start over</button></div>
+    </section>
+  </main>
+  <script src="puzzles.js"></script>
+</body>
+</html>

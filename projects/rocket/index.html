@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteor Mission · ANAYRA'S Fun Zone</title>
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/play.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../" class="logo"><span class="logo-dot"></span> ANAYRA<span class="logo-fun">Fun Zone</span></a>
+    <nav class="nav" aria-label="Main navigation"><a href="../painting/">Painting</a><a href="../../puzzles/play/">Puzzles</a><a href="../../">← Home</a></nav>
+  </header>
+  <main class="play-page">
+    <div class="play-heading">
+      <p class="play-kicker">ANAYRA'S space adventure</p>
+      <h1>Meteor Mission</h1>
+      <p>Choose your ride, give it a name, and fly! Bumped a space rock? Solve a multiplication to keep going.</p>
+    </div>
+    <div class="rocket-layout">
+      <form class="play-panel rocket-setup" id="rocket-setup">
+        <h2>Ready, space explorer?</h2>
+        <div class="ride-section">
+          <p class="field-label">1. Choose your ride</p>
+          <div class="ride-grid" role="group" aria-label="Space rides">
+            <button type="button" class="choice-button" data-ride="red" aria-pressed="true"><span class="ride-icon">🚀</span>Red Rocket</button>
+            <button type="button" class="choice-button" data-ride="green" aria-pressed="false"><span class="ride-icon">🛸</span>Green Saucer</button>
+            <button type="button" class="choice-button" data-ride="purple" aria-pressed="false"><span class="ride-icon">🚀</span>Purple Rocket</button>
+            <button type="button" class="choice-button" data-ride="meteor" aria-pressed="false"><span class="ride-icon">☄️</span>Meteorite</button>
+          </div>
+        </div>
+        <label class="field-label" for="ride-name">2. Name your ride
+          <input id="ride-name" maxlength="24" value="Rainbow Rocket" autocomplete="off">
+        </label>
+        <label class="field-label" for="math-level">Multiplication practice
+          <select id="math-level"><option value="easy">2, 3, 4 & 5 times tables</option><option value="all">2 through 10 times tables</option></select>
+        </label>
+        <button type="submit" class="play-button primary">3. Blast off! 🚀</button>
+        <p class="studio-note">Dodge 15 rocks to finish your mission. Use arrow keys, WASD, the buttons, or drag your ride with a finger.</p>
+      </form>
+      <div>
+        <div class="flight-toolbar">
+          <span class="flight-score" id="flight-score">Rocks dodged: 0 / 15</span>
+          <button type="button" class="play-button" id="pause-flight" disabled>Pause</button>
+        </div>
+        <div class="flight-box">
+          <canvas class="flight-canvas" id="flight-canvas" width="960" height="660" tabindex="0" aria-label="Space flying game. Move with arrow keys, WASD, or drag your ride. Dodge the falling rocks.">Your browser needs canvas support to play.</canvas>
+          <div class="flight-overlay" id="flight-overlay">
+            <div class="play-panel" id="flight-welcome"><h2>Welcome to space! ✨</h2><p>Choose and name your ride, then press Blast off.</p></div>
+            <form class="play-panel" id="repair-form" hidden>
+              <h2>A little bump! 🔧</h2><p>Solve this to fix your ride.</p>
+              <p class="math-question" id="repair-question"></p>
+              <label class="field-label" for="repair-answer">Your answer</label>
+              <div class="math-answer-row"><input class="answer-input" id="repair-answer" type="number" min="0" step="1" inputmode="numeric" required><button class="play-button primary" type="submit">Fix it!</button></div>
+              <p class="live-message" id="repair-message" role="status"></p>
+            </form>
+            <div class="play-panel" id="paused-panel" hidden><h2>Taking a little break 🌙</h2><p>Your mission will wait for you.</p><button type="button" class="play-button primary" id="resume-flight">Keep flying</button></div>
+            <div class="play-panel" id="win-panel" hidden><h2>Mission complete! 🌟</h2><p class="mission-name" id="win-message"></p><button type="button" class="play-button primary" id="fly-again">Fly again!</button></div>
+          </div>
+        </div>
+        <div class="flight-controls" role="group" aria-label="Steer your ride">
+          <button type="button" class="play-button" data-direction="left" aria-label="Fly left">←</button>
+          <button type="button" class="play-button" data-direction="up" aria-label="Fly up">↑</button>
+          <button type="button" class="play-button" data-direction="down" aria-label="Fly down">↓</button>
+          <button type="button" class="play-button" data-direction="right" aria-label="Fly right">→</button>
+        </div>
+        <p class="live-message studio-message mission-name" id="flight-status" role="status">Your adventure is ready when you are.</p>
+        <div class="studio-actions"><button type="button" class="play-button secondary" id="choose-ride">Choose another ride</button></div>
+      </div>
+    </div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
