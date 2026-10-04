@@ -1,0 +1,18 @@
+Generated with the built-in image generation tool.
+Official character references and spellings: https://maizen.com/about/
+Reference images:
+https://i0.wp.com/maizen.com/wp-content/uploads/2024/04/Zenichi-1.png
+https://i0.wp.com/maizen.com/wp-content/uploads/2024/04/Mikey-1.png
+https://i0.wp.com/maizen.com/wp-content/uploads/2024/04/Carrie-1.png
+https://i0.wp.com/maizen.com/wp-content/uploads/2024/08/BananaKid.png
+
+Use case: illustration-story.
+Asset type: polished landscape cartoon party illustration to sit below the heading on Anayra's birthday invitation.
+Input images: Image 1 is the official JJ character reference; Image 2 is the official Mikey reference; Image 3 is the official Carrie reference; Image 4 is the official Banana Kid reference. Use these as identity references, not edit targets. Remove their colored square backdrops and printed names.
+Primary request: A colorful, very cheerful and gently funny birthday-party group picture with exactly these four recognizable Maizen friends. Match the rounded cartoon identities in the references rather than blocky Minecraft avatars.
+Subjects: JJ is the white rabbit in a red hoodie with long floppy rabbit ears, dark trousers, and white feet; Mikey is the bright lime-green turtle with a pale-yellow round belly and green shell; Carrie is the small white friend with floppy pink-lined ears, rosy cheeks, and a red shirt; Banana Kid has the rounded yellow body and distinctive small flat brown-tipped stem on top of his head and brown boxing gloves shown in his reference, not a generic peeled banana.
+Scene: JJ laughing and holding a party popper, Mikey happily dancing with a tiny party hat tilted sideways, Banana Kid comically balancing a stack of colorful cupcakes in his gloved hands, and Carrie catching a little shower of confetti while giggling. A candy-colored rainbow arches above the group, with twinkling rainbow stars, balloons and happy floating confetti. Wholesome humor, expressive poses and friendly faces.
+Style/medium: high-quality children's storybook / sticker illustration with soft painted shading, crisp rounded outlines, bright joyful colors, lovely small details, subtle paper-like warmth; clean white to very pale cream background that blends into a white invitation.
+Composition: landscape 3:2, all four full bodies clearly visible and distinct, large readable characters evenly balanced across the lower central band; the rainbow in the upper band; generous safe margins, no crowding or cropped ears or feet. No invitation heading baked into the art, no text at all.
+Constraints: Exactly four characters, preserve each character's signature colors and shapes, non-pixel rounded cartoon style, no words, no logos, no watermarks, no extra characters or people.
+

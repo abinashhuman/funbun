@@ -1,0 +1,10 @@
+Generated with the built-in image generation tool, editing the four-friend illustration.
+The original character references and prompt are in maizen-friends-party.prompt.txt.
+
+Use case: compositing.
+Asset type: landscape cartoon birthday-party illustration for Anayra's invitation.
+Input image: the existing finished illustration is the edit target. Preserve its polished children's storybook / sticker style, clean white background, rainbow, balloons, colorful sparkling stars, confetti, and funny friendly mood.
+Primary request: Add one cheerful cartoon girl to represent Anayra, with shiny BLACK HAIR and a sparkling TIARA, celebrating with the existing four Maizen friends. She is a fictional cartoon avatar, with a happy smile, black hair falling to her shoulders or longer, a delicate gold tiara with colorful little gems, and a pretty lavender party dress. Put her near the center, dancing happily with both hands raised. Keep her whole body visible and the tiara clearly readable.
+Preserve all four existing characters and their identities: JJ the white rabbit in his red hoodie at the left with his party popper; Mikey the lime-green turtle dancing in his tilted party hat; Carrie the small white friend in the red shirt laughing; Banana Kid the rounded yellow friend at the right with his brown boxing gloves and comically wobbly cupcake tower. Rebalance spacing around the new girl so nobody overlaps or disappears.
+Composition: landscape 3:2, exactly FIVE characters total: four recognizable original cartoon friends plus the black-haired girl in her tiara. Show all five full bodies, with safe margins and the rainbow above the party. The girl belongs naturally in the same illustrated scene.
+Constraints: black hair, visible tiara; maintain the original friends' colors, ears, shells, clothing, and faces. No blocky Minecraft style, no extra characters, no words, no labels, no logos, no watermarks, no photographs.

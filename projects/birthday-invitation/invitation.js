@@ -30,7 +30,7 @@
   // The previous card stays available, so the new design doesn't erase old artwork.
   const previousButton = document.getElementById('previous-card');
   let previousCard;
-  try { previousCard = localStorage.getItem('anayra-invitation-v1'); } catch { /* Optional backup. */ }
+  try { previousCard = localStorage.getItem('anayra-invitation-v5') || localStorage.getItem('anayra-invitation-v4') || localStorage.getItem('anayra-invitation-v3') || localStorage.getItem('anayra-invitation-v2') || localStorage.getItem('anayra-invitation-v1'); } catch { /* Optional backup. */ }
   if (previousCard && previousCard.startsWith('data:image/png;base64,')) {
     previousButton.hidden = false;
     previousButton.addEventListener('click', () => download(previousCard, 'anayra-previous-invitation.png'));
@@ -44,10 +44,31 @@
     const escape = text => text.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
     const picture = canvas.toDataURL('image/png');
     const text = escape(instructionText.value.trim() || defaultInstructions);
+    // Local HTML files cannot supply the referrer YouTube requires for its player.
+    // Keep a direct link to the full recording in the downloaded invitation.
+    const songSection = document.querySelector('[data-party-song]').cloneNode(true);
+    songSection.querySelector('.song-player').remove();
+    // Kitty travels with the invitation! In a local file, the speaker opens the song.
+    const speakerLink = document.createElement('a');
+    speakerLink.className = 'song-speaker';
+    speakerLink.href = songSection.querySelector('.song-link').href;
+    speakerLink.target = '_blank';
+    speakerLink.rel = 'noopener noreferrer';
+    speakerLink.setAttribute('aria-label', 'Play the full meow song in a new tab');
+    speakerLink.append(songSection.querySelector('.speaker-icon').cloneNode(true));
+    const speakerLabel = document.createElement('span');
+    speakerLabel.textContent = 'Play song ↗';
+    speakerLink.append(speakerLabel);
+    songSection.querySelector('[data-song-speaker]').replaceWith(speakerLink);
+    songSection.classList.add('is-playing');
+    songSection.querySelector('.song-note').textContent = 'Tap the speaker to play the full song and sing along. Your invitation stays open. You\'ll need an internet connection.';
+    const song = songSection.outerHTML;
+    // Copy our own music styles so the tiny dancing sticker also works offline.
+    const songStyles = Array.from(document.getElementById('party-song-styles').sheet.cssRules, rule => rule.cssText).join('\n');
     const html = `<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ANAYRA'S Birthday Invitation</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ANAYRA'S Birthday Invitation</title><style>${songStyles}</style>
 <style>*{box-sizing:border-box}body{margin:0;padding:24px;font-family:system-ui,sans-serif;color:#2b2140;background:#fff0f7}main{max-width:650px;margin:auto}img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 8px 30px #2b214020}.reply{margin-top:20px;padding:24px;text-align:center;background:white;border-radius:20px}h1{font-size:1.6rem}button{font:700 1.1rem system-ui;padding:14px 24px;border:2px solid #ddd0f3;border-radius:14px;background:#faf6ff;color:#2b2140;cursor:pointer;margin:5px}button[aria-pressed=true]{background:#eee5ff;border-color:#7c5cff}button:focus-visible{outline:3px solid #7c5cff;outline-offset:3px}.sign{background:#faf6ff;border:2px dashed #d0c0ed;border-radius:16px;padding:16px;margin-top:16px;white-space:pre-wrap;overflow-wrap:anywhere}h2{font-size:1.2rem}[hidden]{display:none}</style></head>
-<body><main><img src="${picture}" alt="ANAYRA'S decorated birthday invitation"><section class="reply"><h1>Coming to the party?</h1><div role="group" aria-label="Coming to the party"><button type="button" data-coming="yes" aria-pressed="false">Yes! 🎉</button><button type="button" data-coming="no" aria-pressed="false">No 💜</button></div><p id="response" role="status">Choose Yes or No.</p><div id="instructions" class="sign" hidden><h2>🪧 Party instructions</h2><p>${text}</p></div></section></main>
+<body><main><img src="${picture}" alt="ANAYRA'S decorated birthday invitation">${song}<section class="reply"><h1>Coming to the party?</h1><div role="group" aria-label="Coming to the party"><button type="button" data-coming="yes" aria-pressed="false">Yes! 🎉</button><button type="button" data-coming="no" aria-pressed="false">No 💜</button></div><p id="response" role="status">Choose Yes or No.</p><div id="instructions" class="sign" hidden><h2>🪧 Party instructions</h2><p>${text}</p></div></section></main>
 <script>document.querySelectorAll('[data-coming]').forEach(function(button){button.addEventListener('click',function(){document.querySelectorAll('[data-coming]').forEach(function(other){other.setAttribute('aria-pressed',String(other===button))});var yes=button.dataset.coming==='yes';document.getElementById('instructions').hidden=!yes;document.getElementById('response').textContent=yes?'Yay! Here are your party instructions. 🎉':'Thanks for letting me know. Maybe next time! 💜'})});<\/script></body></html>`;
     return new File([html], 'anayra-birthday-invitation.html', { type: 'text/html' });
   }
