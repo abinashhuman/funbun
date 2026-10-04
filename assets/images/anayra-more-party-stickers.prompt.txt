@@ -1,0 +1,20 @@
+Generated with the built-in image generation tool, using anayra-maizen-snuggles.jpg as the character and style reference.
+
+CUPCAKE GIGGLES
+Use case: compositing.
+Asset type: a transparent-background cartoon sticker for a child's birthday invitation.
+Input image: reference for the character identities and existing illustration style, not the scene composition.
+Primary request: A fresh cute sticker showing ONLY the black-haired girl with her tiara and Mikey the green turtle, giggling together over two colorful cupcakes. The girl wears the same lavender sparkly party dress, jeweled gold tiara, and purple shoes as the reference. Her hair is long, glossy BLACK and her friendly smiling face matches the reference. Mikey has the same bright lime-green head and body, green turtle shell, pale-yellow round belly, and tiny tilted blue party hat. Both are sitting close together, each holding a little cupcake with ridiculously tall swirling pink or rainbow frosting and laughing. Clear expressive wholesome humor, full bodies, cheerful faces.
+Style: exactly the same polished children's storybook / sticker illustration as the reference, crisp rounded dark outlines, soft painterly shading, bright pretty colors, tiny rainbow twinkles and hearts clustered around the pair, a clean white die-cut outline.
+Composition: a single centered sticker, exactly TWO characters, plenty of transparent space around all edges, compact square composition, every part inside the canvas, no extra objects beyond the cupcakes and small sparkles.
+Constraints: Genuine transparent background with alpha; no white or colored rectangular backdrop, no words, no labels, no watermarks, no logos. No JJ, no Carrie, no Banana Kid, no extra people, no Minecraft blocks. Preserve both character designs.
+
+HIGH-FIVE WITH JJ
+Use case: compositing.
+Asset type: a transparent-background cartoon sticker for Anayra's birthday invitation, matching her existing party picture.
+Input image: identity and style reference, not an edit target.
+Primary request: A fresh cheerful sticker showing ONLY the black-haired girl with her jeweled gold tiara and JJ the white rabbit in his red hoodie, giving each other a playful HIGH-FIVE. Both have big happy smiling faces. The girl's hand and JJ's white paw meet clearly overhead in the center, with a little bright starburst at the point where they touch. The girl has the same long glossy BLACK hair, gold tiara with a pink heart jewel, lavender sparkly party dress, and purple shoes as the reference. JJ has the same white rabbit face, two long floppy rabbit ears with red outer hood trim, red hoodie with white front, dark trousers, and white feet as the reference. Their bodies face each other, each lifting one foot playfully; show their complete bodies. A few small rainbow-colored twinkles and hearts surround them.
+Style: same polished children's storybook / sticker art as the reference, crisp rounded dark outlines, lovely soft painted shading, bright pretty colors, clean white die-cut outline.
+Composition: one centered sticker, square canvas, exactly TWO characters, compact balanced scene with both full bodies and ears safely inside the canvas; generous transparent space around all edges.
+Constraints: Genuine transparent background with alpha; no white or colored rectangular backdrop, no words, no labels, no watermarks, no logos, no Mikey, no Carrie, no Banana Kid, no extra people. No blocky Minecraft style. Preserve the existing character appearances.
+

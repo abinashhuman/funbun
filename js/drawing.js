@@ -6,8 +6,8 @@
   const canvas = root.querySelector('canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   const isInvitation = root.dataset.studio === 'invitation';
-  // Keep the old card saved separately while starting the new sticker-free card.
-  const storageKey = `anayra-${root.dataset.studio}-${isInvitation ? 'v2' : 'v1'}`;
+  // Keep earlier cards saved separately while starting the new rainbow party card.
+  const storageKey = `anayra-${root.dataset.studio}-${isInvitation ? 'v6' : 'v1'}`;
   const message = root.querySelector('[data-message]');
   const undoButton = root.querySelector('[data-undo]');
   const redoButton = root.querySelector('[data-redo]');
@@ -15,6 +15,35 @@
   const sizeOutput = root.querySelector('[data-size-value]');
   const stickers = new Image();
   stickers.src = new URL('../assets/images/jj-mikey-stickers.png', document.currentScript.src).href;
+  const pictureStickers = {};
+  const assetBase = new URL('../assets/images/', document.currentScript.src);
+  // Every picture waits to load before it can be stamped or saved on the card.
+  function loadPicture(name, filename) {
+    const picture = new Image();
+    pictureStickers[name] = picture;
+    return new Promise(resolve => {
+      picture.onload = () => {
+        root.querySelector(`[data-tool="${name}"]`).disabled = false;
+        resolve();
+      };
+      picture.onerror = () => {
+        say('One picture could not load. You can still decorate your card!');
+        resolve();
+      };
+      picture.src = new URL(filename, assetBase).href;
+    });
+  }
+  const partyReady = isInvitation ? Promise.all([
+    loadPicture('friends', 'anayra-maizen-snuggles.jpg'),
+    loadPicture('high-five', 'anayra-jj-high-five-sticker.png'),
+    loadPicture('cupcakes', 'anayra-mikey-cupcake-sticker.png'),
+    loadPicture('cupcake-friends', 'anayra-jj-mikey-cupcake-sticker.png')
+  ]) : Promise.resolve();
+  const partyPicture = pictureStickers.friends;
+  const stickerTools = ['jj', 'mikey', 'maizen', ...Object.keys(pictureStickers)];
+  const finishButtons = root.querySelectorAll('[data-reset], [data-save], #share-invitation, #download-invitation');
+  finishButtons.forEach(button => { button.disabled = true; });
+  canvas.setAttribute('aria-busy', 'true');
   let color = '#7c5cff';
   let tool = 'brush';
   let size = Number(sizeInput.value);
@@ -26,6 +55,7 @@
   let initialized = false;
   let changed = false;
   const rainbowColors = ['#ff526e', '#ff963c', '#ffd34c', '#4bd39a', '#4fbaff', '#7c5cff'];
+  const paintTools = ['brush', 'glitter', 'rainbow-sparkles', 'rainbow-brush', 'eraser'];
 
   function say(text) { message.textContent = text; }
   function snapshot() { return ctx.getImageData(0, 0, canvas.width, canvas.height); }
@@ -57,11 +87,11 @@
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     if (!isInvitation) return;
-    // Red and green blocks make a playful JJ and Mikey party border.
+    // Every rainbow color gets a turn around the party border.
     for (let y = 0; y < canvas.height; y += 30) {
-      ctx.fillStyle = y % 60 ? '#b8eed0' : '#ffe0e4';
-      ctx.fillRect(0, y, 22, 30);
-      ctx.fillRect(canvas.width - 22, y, 22, 30);
+      ctx.fillStyle = rainbowColors[(y / 30) % rainbowColors.length];
+      ctx.fillRect(0, y, 12, 30);
+      ctx.fillRect(canvas.width - 12, y, 12, 30);
     }
     ctx.textAlign = 'center';
     ctx.fillStyle = '#dd365a';
@@ -80,29 +110,71 @@
     ctx.fillStyle = '#68587c';
     ctx.font = '24px "Nunito", sans-serif';
     ctx.fillText("Let's play, paint & celebrate!", 350, 340);
-    const marks = [[90, 150], [590, 170], [110, 380], [570, 390], [80, 780], [605, 760]];
+    if (partyPicture.complete && partyPicture.naturalWidth) {
+      const width = 650;
+      ctx.drawImage(partyPicture, 25, 380, width, width * partyPicture.naturalHeight / partyPicture.naturalWidth);
+    }
+    ctx.fillStyle = '#7c5cff';
+    ctx.font = 'bold 22px "Nunito", sans-serif';
+    ctx.fillText('JJ · Mikey · Banana Kid · Carrie', 350, 848);
+    ctx.fillStyle = '#68587c';
+    ctx.font = '20px "Nunito", sans-serif';
+    ctx.fillText('Rainbow sparkles & silly smiles!', 350, 882);
+    // Two extra party moments include Anayra too, underneath the big group hug.
+    ctx.strokeStyle = '#e9e2f2'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(60, 906); ctx.lineTo(640, 906); ctx.stroke();
+    ctx.fillStyle = '#7c5cff';
+    ctx.font = 'bold 24px "Baloo 2", sans-serif';
+    ctx.fillText('MORE PARTY GIGGLES!', 350, 938);
+    [['high-five', 40, '#f5edff', 'High-five with JJ!'], ['cupcakes', 370, '#eafff1', 'Cupcake giggles with Mikey!']].forEach(([name, x, background, label]) => {
+      ctx.fillStyle = background;
+      ctx.beginPath(); ctx.roundRect(x, 950, 290, 280, 20); ctx.fill();
+      const picture = pictureStickers[name];
+      if (picture.complete && picture.naturalWidth) ctx.drawImage(picture, x + 25, 958, 240, 240);
+      ctx.fillStyle = '#68587c';
+      ctx.font = 'bold 18px "Nunito", sans-serif';
+      ctx.fillText(label, x + 145, 1216);
+    });
+    // The new trio gets a small spot below the other pictures, with room around it.
+    ctx.fillStyle = '#fff5df';
+    ctx.beginPath(); ctx.roundRect(215, 1255, 270, 200, 20); ctx.fill();
+    const trio = pictureStickers['cupcake-friends'];
+    if (trio.complete && trio.naturalWidth) {
+      const width = 230;
+      ctx.drawImage(trio, 235, 1270, width, width * trio.naturalHeight / trio.naturalWidth);
+    }
+    ctx.fillStyle = '#68587c';
+    ctx.font = 'bold 18px "Nunito", sans-serif';
+    ctx.fillText('You, JJ & Mikey!', 350, 1446);
+    const marks = [[90, 150], [590, 170], [80, 280], [620, 280]];
     marks.forEach(([x, y], i) => {
-      ctx.fillStyle = i % 2 ? '#55c994' : '#ff819b';
+      ctx.fillStyle = rainbowColors[i];
       star(x, y, 13, 6);
     });
+  }
+
+  function finishLoading() {
+    canvas.setAttribute('aria-busy', 'false');
+    finishButtons.forEach(button => { button.disabled = false; });
   }
 
   async function initialize() {
     if (initialized) return;
     initialized = true;
     // Wait for fonts so the saved card and its preview use the same lettering.
-    await document.fonts.ready;
-    if (changed) return;
+    await Promise.all([document.fonts.ready, partyReady]);
+    if (changed) { finishLoading(); return; }
     let saved;
     try { saved = localStorage.getItem(storageKey); } catch { /* Drawing still works. */ }
     if (saved) {
       const picture = new Image();
       picture.onload = () => {
         if (!changed) ctx.drawImage(picture, 0, 0, canvas.width, canvas.height);
+        finishLoading();
       };
-      picture.onerror = () => { if (!changed) drawBase(); };
+      picture.onerror = () => { if (!changed) drawBase(); finishLoading(); };
       picture.src = saved;
-    } else drawBase();
+    } else { drawBase(); finishLoading(); }
   }
   drawBase();
   stickers.onload = () => {
@@ -129,7 +201,7 @@
       root.querySelectorAll('[data-tool]').forEach(other => {
         other.setAttribute('aria-pressed', String(other === button));
       });
-      say(['brush', 'glitter', 'rainbow-brush', 'eraser'].includes(tool)
+      say(paintTools.includes(tool)
         ? 'Drag on the picture to paint.' : 'Tap on the picture to add your shape or sticker.');
     });
   });
@@ -159,14 +231,22 @@
     ctx.save();
     ctx.fillStyle = color; ctx.strokeStyle = color; ctx.lineWidth = Math.max(3, size / 3);
     if (tool === 'jj' || tool === 'mikey') sticker(tool, x, y, size * 4 + 45);
-    else if (tool === 'amazing') {
-      // A colorful word sticker that uses the color Anayra picked.
+    else if (pictureStickers[tool]) {
+      const picture = pictureStickers[tool];
+      if (picture.complete && picture.naturalWidth) {
+        const width = tool === 'friends' ? size * 7 + 140 : size * 5 + 85;
+        const height = width * picture.naturalHeight / picture.naturalWidth;
+        ctx.drawImage(picture, x - width / 2, y - height / 2, width, height);
+      }
+    }
+    else if (tool === 'maizen') {
+      // The group is called Maizen. This word sticker uses Anayra's paint color.
       ctx.translate(x, y); ctx.rotate(-.1);
       const scale = .7 + size / 32; ctx.scale(scale, scale);
       ctx.fillStyle = '#fff4c9'; ctx.strokeStyle = color; ctx.lineWidth = 4;
       ctx.beginPath(); ctx.roundRect(-95, -34, 190, 68, 18); ctx.fill(); ctx.stroke();
       ctx.fillStyle = color; ctx.font = 'bold 28px "Nunito", sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('AMAZING!', 0, 1);
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('MAIZEN', 0, 1);
       ctx.fillStyle = '#ffd166'; star(-84, -33, 13, 6); star(85, 32, 13, 6);
     }
     else if (tool === 'star') star(x, y, radius, radius * .45);
@@ -200,13 +280,15 @@
     for (let i = 0; i < 8; i++) {
       const gx = x + (Math.random() - .5) * size * 5;
       const gy = y + (Math.random() - .5) * size * 5;
-      ctx.fillStyle = i % 3 ? color : '#ffd166';
+      // Rainbow sparkles twinkle in every rainbow color as you paint.
+      ctx.fillStyle = tool === 'rainbow-sparkles'
+        ? rainbowColors[i % rainbowColors.length] : i % 3 ? color : '#ffd166';
       star(gx, gy, Math.random() * 3 + 1.5, 1);
     }
   }
   function stroke(from, to) {
     ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    if (tool === 'glitter') {
+    if (tool === 'glitter' || tool === 'rainbow-sparkles') {
       const distance = Math.hypot(to.x - from.x, to.y - from.y);
       const steps = Math.max(1, Math.ceil(distance / Math.max(3, size)));
       for (let i = 0; i <= steps; i++) glitter(from.x + (to.x - from.x) * i / steps, from.y + (to.y - from.y) * i / steps);
@@ -226,17 +308,17 @@
   }
 
   canvas.addEventListener('pointerdown', event => {
-    if (activePointer !== null || event.button > 0) return;
+    if (canvas.getAttribute('aria-busy') === 'true' || activePointer !== null || event.button > 0) return;
     changed = true; remember(); drawing = true; activePointer = event.pointerId;
     canvas.setPointerCapture(event.pointerId);
     lastPoint = point(event);
-    if (['brush', 'glitter', 'rainbow-brush', 'eraser'].includes(tool)) stroke(lastPoint, lastPoint);
+    if (paintTools.includes(tool)) stroke(lastPoint, lastPoint);
     else stamp(lastPoint.x, lastPoint.y);
   });
   canvas.addEventListener('pointermove', event => {
     if (!drawing || event.pointerId !== activePointer) return;
     const next = point(event);
-    if (['brush', 'glitter', 'rainbow-brush', 'eraser'].includes(tool)) stroke(lastPoint, next);
+    if (paintTools.includes(tool)) stroke(lastPoint, next);
     lastPoint = next;
   });
   function finish(event) {
@@ -260,7 +342,7 @@
   });
   canvas.addEventListener('drop', event => {
     const dropped = event.dataTransfer.getData('text/plain');
-    if (!['jj', 'mikey', 'amazing'].includes(dropped)) return;
+    if (canvas.getAttribute('aria-busy') === 'true' || !stickerTools.includes(dropped)) return;
     event.preventDefault();
     const button = root.querySelector(`[data-tool="${dropped}"]`);
     if (!button || button.disabled) return;
@@ -269,10 +351,11 @@
     say('Sticker added! Pick another sticker whenever you like.');
   });
   canvas.addEventListener('keydown', event => {
+    if (canvas.getAttribute('aria-busy') === 'true') return;
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault(); changed = true; remember();
     const x = canvas.width / 2, y = canvas.height / 2;
-    if (['brush', 'glitter', 'rainbow-brush', 'eraser'].includes(tool)) stroke({ x, y }, { x: x + 60, y });
+    if (paintTools.includes(tool)) stroke({ x, y }, { x: x + 60, y });
     else stamp(x, y);
     persist();
   });

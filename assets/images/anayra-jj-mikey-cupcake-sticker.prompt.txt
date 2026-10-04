@@ -1,0 +1,11 @@
+Generated with the built-in image generation tool.
+Edit target: anayra-mikey-cupcake-sticker.png.
+Supporting JJ reference: anayra-jj-high-five-sticker.png.
+
+Use case: compositing.
+Asset type: one small transparent cartoon sticker to add beside the existing small pictures on Anayra's birthday invitation.
+Input images: Image 1 is the cupcake sticker edit target showing Anayra and Mikey. Image 2 is a supporting character reference for JJ, the white rabbit in the red hoodie. Do not recreate Image 2's high-five composition.
+Primary request: Make a NEW version of the cupcake sticker that adds JJ to the happy cupcake gathering with the girl and Mikey. Preserve the original girl's and Mikey's identity, clothing, colors, and cheerful expressions from Image 1. Add JJ sitting close to the girl's left, with his white rabbit face, long floppy rabbit ears, red hoodie with a white front, dark trousers, and white feet matching Image 2. The girl sits in the center, still with long glossy BLACK hair, her sparkling gold tiara with a pink heart jewel, lavender party dress, and purple shoes. Mikey sits on her right, still the bright lime-green turtle with green shell, pale-yellow belly, and blue party hat. All THREE friends laugh and hold a cupcake each; JJ's cupcake has a silly extra-tall swirl of rainbow frosting. Let the three lean together as friendly party buddies. Add a few small rainbow-colored hearts and twinkling stars. Cute, pretty, playful and gently funny.
+Composition: exactly three characters, full bodies in one balanced compact landscape sticker composition around 3:2, clean white die-cut outline, safe transparent margins; keep all ears, feet and tiara inside the canvas. Clear individual faces, no overlap that hides a character. This is a small decoration, no large background scene.
+Invariants: preserve the same polished storybook / sticker style, rounded dark outlines, soft painted shading, bright lovely colors; preserve the girl's black hair and tiara, Mikey's turtle features, and JJ's rabbit features and red hoodie.
+Constraints: Genuine transparent background with alpha; no solid white or colored rectangular background, no text or speech bubbles, no logos, no watermarks, no extra characters, no pixelated Minecraft style.

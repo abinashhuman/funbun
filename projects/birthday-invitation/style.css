@@ -8,7 +8,10 @@
 .sticker-grid .tool-button { display: block; }
 .sticker-thumb { width: 68px; height: 92px; margin: 0 auto 6px; }
 .supply-note { margin: 0 0 12px; font-size: .9rem; line-height: 1.5; }
-.amazing-sticker { grid-column: 1 / -1; background: #fff4c9; color: var(--purple); font-weight: 800; }
+.friends-sticker { grid-column: 1 / -1; }
+.friends-sticker img, .picture-sticker img { display: block; width: 100%; height: auto; border-radius: 8px; margin-bottom: 6px; }
+.maizen-sticker { grid-column: 1 / -1; background: #fff4c9; color: var(--purple); font-weight: 800; }
+.rainbow-sparkles { grid-column: 1 / -1; background: linear-gradient(120deg, #ffe0e4, #fff4c9, #e0fff0, #e6f3ff, #f0eaff); }
 .tool-section summary { font-weight: 800; cursor: pointer; padding: 8px 0; }
 .tool-section .tool-grid { margin-top: 10px; }
 .instruction-sign { border: 2px dashed #d0c0ed; background: #faf6ff; padding: 14px; border-radius: 16px; }
@@ -23,7 +26,7 @@
   .studio-tools { padding: 10px; gap: 14px; }
   .studio-tools h2 { font-size: .95rem; }
   .sticker-grid, .tool-grid { grid-template-columns: 1fr; }
-  .amazing-sticker { grid-column: 1; font-size: .75rem; }
+  .friends-sticker, .picture-sticker, .maizen-sticker, .rainbow-sparkles { grid-column: 1; font-size: .75rem; }
   .sticker-thumb { width: 54px; height: 72px; }
   .color-grid { gap: 7px; }
   .color-swatch { width: 26px; height: 26px; }
